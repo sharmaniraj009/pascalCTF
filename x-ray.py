@@ -1,0 +1,35 @@
+# Initialize the flag as a list of 32 unknown characters
+flag = ["?"] * 32
+
+# Mapping from character -> required position
+char_positions = {
+    0x30: [0xC, 0x1D, 0x16],
+    0x33: [0x19],
+    0x34: [0x11],
+    0x43: [6],
+    0x44: [0x15],
+    0x46: [8],
+    0x4C: [0xD, 0x1E],
+    0x54: [7, 0x13],
+    0x56: [0x1A],
+    0x5F: [0xF, 0x14, 0x17, 0x1B],
+    0x61: [1, 4, 0xB],
+    0x63: [3, 0x10],
+    0x6C: [5, 0x1C],
+    0x6E: [0x12],
+    0x6F: [0xE],
+    0x70: [0, 10],
+    0x72: [0x18],
+    0x73: [2],
+    0x7B: [9],
+    0x7D: [0x1F],
+}
+
+# Fill in the flag based on the character positions
+for char, positions in char_positions.items():
+    for pos in positions:
+        flag[pos] = chr(char)
+
+# Convert the list to a string
+recovered_flag = "".join(flag)
+print(recovered_flag)
